@@ -13,11 +13,55 @@ R$5000. Deve ser possível consultar o quanto o supermercado já faturou, quanto
 clientes entraram no supermercado, quantos não foram atendidos, qual o valor da menor compra, da 
 maior compra, número de caixas disponíveis, em funcionamento e parados.
  */
+import 'dart:io';
+import 'dart:math';
 
-class caixa {
+class Mercado {
+  num _ncaixas;
+  num lucro = 0;
+  List caixas = [];
+  Random random = new Random();
 
+  Mercado(this._ncaixas);
+
+  void definePessoasNaFila(_ncaixas) {
+    for (int i = 0; i = _ncaixas; i++) {
+      int randomNum = random.nextInt(50) + 0;
+      caixas[i] = randomNum;
+      Caixa c = Caixa(caixas[i]); //revisar aqui
+      caixas[i] = c;
+    }
+  }
+
+  void entradaClientes() {}
 }
 
-void main(){
-  
+class Caixa {
+  num _capMax;
+  num pessoasNaFila = 0;
+  bool status = true;
+
+  Caixa(this._capMax);
+
+  void abreCaixa() {
+    status = true;
+  }
+
+  void fechaCaixa() {
+    status = false;
+  }
+
+  void avancaAtendimento(int n) {
+    pessoasNaFila -= n;
+  }
+
+  void addCliente(int n) {
+    if (_capMax != pessoasNaFila) {
+      pessoasNaFila += n;
+    } else {
+      print("Capacidade Máxima de Lotação Atingida.");
+    }
+  }
 }
+
+void main() {}
